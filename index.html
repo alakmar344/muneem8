@@ -18,6 +18,7 @@
             color: #e2e8f0;
             line-height: 1.6;
             background: #0f172a;
+            overflow-x: hidden;
         }
 
         .container {
@@ -26,11 +27,27 @@
             padding: 0 20px;
         }
 
+        /* Scroll animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
             color: white;
-            padding: 100px 20px 80px;
+            padding: 120px 20px 100px;
             position: relative;
             overflow: hidden;
         }
@@ -46,6 +63,23 @@
             opacity: 0.5;
         }
 
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-30px, 30px) scale(1.1); }
+        }
+
         .hero-content {
             position: relative;
             z-index: 1;
@@ -54,11 +88,15 @@
         }
 
         .hero h1 {
-            font-size: 3em;
+            font-size: 3.2em;
             font-weight: 700;
             margin-bottom: 20px;
             line-height: 1.1;
             letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero .subtext {
@@ -90,7 +128,7 @@
         }
 
         .trust-item::before {
-            content: "";
+            content: "✓";
             width: 20px;
             height: 20px;
             background: #10b981;
@@ -99,6 +137,8 @@
             align-items: center;
             justify-content: center;
             font-size: 12px;
+            color: #0f172a;
+            font-weight: bold;
         }
 
         .cta-buttons {
@@ -125,8 +165,8 @@
         }
 
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4);
         }
 
         .btn-primary {
@@ -337,6 +377,42 @@
         .brand-highlight strong {
             color: #10b981;
             font-weight: 600;
+        }
+
+        .paint-brands {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 700px;
+            margin: 40px auto 0;
+        }
+
+        .paint-card {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(15, 23, 42, 0.8) 100%);
+            padding: 35px 30px;
+            border-radius: 12px;
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            transition: all 0.4s ease;
+            text-align: center;
+        }
+
+        .paint-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: #10b981;
+            box-shadow: 0 20px 50px rgba(16, 185, 129, 0.2);
+        }
+
+        .paint-card h4 {
+            font-size: 1.5em;
+            color: #f8fafc;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .paint-card p {
+            color: #94a3b8;
+            font-size: 1.05em;
+            line-height: 1.6;
         }
 
         /* Why Choose Us */
@@ -580,6 +656,12 @@
                 </div>
                 
                 <div class="category-card">
+                    <div class="category-icon">🎨</div>
+                    <h3>Premium Paints</h3>
+                    <p>Birla Opus & Asian Paints - Certified Sellers</p>
+                </div>
+                
+                <div class="category-card">
                     <div class="category-icon">🏗</div>
                     <h3>Builder Supplies</h3>
                     <p>Bulk orders supported</p>
@@ -593,7 +675,18 @@
         <div class="container">
             <h2 class="section-title">Authorized & Trusted Brands</h2>
             <div class="brand-highlight">
-                <p>We deal in genuine and well-known brands including <strong>Finolex</strong> for long-lasting plumbing solutions.</p>
+                <p>We are <strong>certified sellers</strong> of premium brands including <strong>Finolex</strong> for plumbing, <strong>Birla Opus</strong> and <strong>Asian Paints</strong> for all your painting needs.</p>
+            </div>
+            
+            <div class="paint-brands">
+                <div class="paint-card">
+                    <h4>🎨 Birla Opus</h4>
+                    <p>Premium quality paints for lasting finish</p>
+                </div>
+                <div class="paint-card">
+                    <h4>🖌️ Asian Paints</h4>
+                    <p>Trusted colors for every surface</p>
+                </div>
             </div>
         </div>
     </section>
@@ -646,9 +739,9 @@
             <h3>Jeevanji Traders</h3>
             <p>Ahemad Nagar, Gohalpur, Jabalpur – 482002, Madhya Pradesh</p>
             <div class="footer-links">
-                <a href="tel:+919876543210">Call Us</a>
+                <a href="tel:+918962643252">Call Us</a>
                 <a href="https://maps.google.com/?q=Ahemad+Nagar+Gohalpur+Jabalpur" target="_blank">Google Maps</a>
-                <a href="https://wa.me/919876543210" target="_blank">WhatsApp</a>
+                <a href="https://wa.me/918962643252" target="_blank">WhatsApp</a>
             </div>
             <p class="footer-tagline">Serving Jabalpur with trusted sanitary solutions</p>
         </div>
